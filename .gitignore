@@ -1,0 +1,12 @@
+.idea/
+bundles/
+node_modules/
+.eslintcache
+src/renderer/public/Data
+src/renderer/public/Fonts
+
+# Webpack
+.webpack/
+
+# Electron-Forge
+out/

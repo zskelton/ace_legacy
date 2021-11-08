@@ -1,0 +1,112 @@
+{
+  "name": "webcockpit",
+  "version": "0.1.0",
+  "main": ".webpack/main",
+  "scripts": {
+    "lint": "eslint --cache **/*.{js,mjs,jsx,ts,tsx}",
+    "lint-fix": "npm run lint -- --fix",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "webcockpit",
+            "authors": [
+              "Professoralex16",
+              "Ninjo",
+              "Benjozork"
+            ],
+            "description":
+              "An Advanced Cockpit Emulator"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/renderer/public/index.html",
+                  "js": "./src/renderer/src/index.tsx",
+                  "name": "main_window"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    }
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "path": "^0.12.7",
+    "react": "^17.0.2",
+    "react-dnd": "^14.0.2",
+    "react-dnd-html5-backend": "^14.0.0",
+    "react-dom": "^17.0.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-zoom-pan-pinch": "^1.6.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-react": "^7.14.5",
+    "@electron-forge/cli": "^6.0.0-beta.57",
+    "@electron-forge/maker-deb": "^6.0.0-beta.57",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.57",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.57",
+    "@electron-forge/maker-zip": "^6.0.0-beta.57",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.57",
+    "@flybywiresim/eslint-config": "^0.1.0",
+    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "@types/react": "^17.0.8",
+    "@types/react-dom": "^17.0.5",
+    "@types/react-router": "^5.1.14",
+    "@types/react-router-dom": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
+    "autoprefixer": "^10.3.0",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^5.0.0",
+    "electron": "13.1.6",
+    "eslint": "^7.27.0",
+    "eslint-plugin-import": "^2.20.0",
+    "fork-ts-checker-webpack-plugin": "^6.0.1",
+    "node-loader": "^2.0.0",
+    "postcss": "^8.3.0",
+    "postcss-cli": "^8.3.1",
+    "postcss-loader": "^6.1.1",
+    "postcss-preset-env": "^6.7.0",
+    "style-loader": "^2.0.0",
+    "tailwindcss": "^2.1.2",
+    "ts-loader": "^9.2.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.2.4"
+  }
+}
